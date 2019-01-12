@@ -1,15 +1,15 @@
-%define		kdeappsver	18.12.0
+%define		kdeappsver	18.12.1
 %define		kfver		5.53.0
 %define		qtver		5.9.0
 %define		kaname		kontactinterface
 Summary:	Kontact interface
 Name:		ka5-%{kaname}
-Version:	18.12.0
+Version:	18.12.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	a0c31eb2b700f65b2243d9383d11d506
+# Source0-md5:	6e466d8989306aae807a5bfa9e0f87b5
 URL:		http://www.kde.org/
 BuildRequires:	gettext-devel
 BuildRequires:	kf5-extra-cmake-modules >= 5.51.0
@@ -19,6 +19,7 @@ BuildRequires:	kf5-kiconthemes-devel >= 5.51.0
 BuildRequires:	kf5-kparts-devel >= 5.51.0
 BuildRequires:	kf5-kwindowsystem-devel >= 5.51.0
 BuildRequires:	kf5-kxmlgui-devel >= 5.51.0
+BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
@@ -48,14 +49,14 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 install -d build
 cd build
 %cmake \
+	-G Ninja \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	..
-%{__make}
+%ninja_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} -C build install \
-	DESTDIR=$RPM_BUILD_ROOT
+%ninja_install -C build
 install -d $RPM_BUILD_ROOT%{_includedir}/KF5/Akonadi
 
 %find_lang %{kaname} --all-name --with-kde
