@@ -1,24 +1,25 @@
-%define		kdeappsver	18.12.1
+%define		kdeappsver	19.04.1
+%define		kframever	5.56.0
 %define		kfver		5.53.0
 %define		qtver		5.9.0
 %define		kaname		kontactinterface
 Summary:	Kontact interface
 Name:		ka5-%{kaname}
-Version:	18.12.1
+Version:	19.04.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	6e466d8989306aae807a5bfa9e0f87b5
+# Source0-md5:	ebfa484fa425ed695275c3116f9a748b
 URL:		http://www.kde.org/
 BuildRequires:	gettext-devel
-BuildRequires:	kf5-extra-cmake-modules >= 5.51.0
-BuildRequires:	kf5-kcoreaddons-devel >= 5.51.0
-BuildRequires:	kf5-ki18n-devel >= 5.51.0
-BuildRequires:	kf5-kiconthemes-devel >= 5.51.0
-BuildRequires:	kf5-kparts-devel >= 5.51.0
-BuildRequires:	kf5-kwindowsystem-devel >= 5.51.0
-BuildRequires:	kf5-kxmlgui-devel >= 5.51.0
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-kcoreaddons-devel >= %{kframever}
+BuildRequires:	kf5-ki18n-devel >= %{kframever}
+BuildRequires:	kf5-kiconthemes-devel >= %{kframever}
+BuildRequires:	kf5-kparts-devel >= %{kframever}
+BuildRequires:	kf5-kwindowsystem-devel >= %{kframever}
+BuildRequires:	kf5-kxmlgui-devel >= %{kframever}
 BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
@@ -50,6 +51,7 @@ install -d build
 cd build
 %cmake \
 	-G Ninja \
+	-DHTML_INSTALL_DIR=%{_kdedocdir} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	..
 %ninja_build
