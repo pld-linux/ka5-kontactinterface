@@ -1,16 +1,16 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		kfver		5.53.0
 %define		qtver		5.9.0
 %define		kaname		kontactinterface
 Summary:	Kontact interface
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	ebfa484fa425ed695275c3116f9a748b
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	40f77ad37aea6ffff7496fea0d9297b3
 URL:		http://www.kde.org/
 BuildRequires:	gettext-devel
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
@@ -71,11 +71,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-/etc/xdg/kontactinterface.categories
-/etc/xdg/kontactinterface.renamecategories
 %attr(755,root,root) %ghost %{_libdir}/libKF5KontactInterface.so.5
 %attr(755,root,root) %{_libdir}/libKF5KontactInterface.so.5.*.*
 %{_datadir}/kservicetypes5/kontactplugin.desktop
+%{_datadir}/qlogging-categories5/kontactinterface.categories
+%{_datadir}/qlogging-categories5/kontactinterface.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
