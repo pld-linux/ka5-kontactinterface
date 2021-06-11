@@ -1,16 +1,16 @@
-%define		kdeappsver	21.04.1
+%define		kdeappsver	21.04.2
 %define		kframever	5.56.0
 %define		kfver		5.53.0
 %define		qtver		5.9.0
 %define		kaname		kontactinterface
 Summary:	Kontact interface
 Name:		ka5-%{kaname}
-Version:	21.04.1
+Version:	21.04.2
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	c48a8c5acadd25cb83f09cf9f626924f
+# Source0-md5:	f066cca558958cce3add36b5bf7078fb
 URL:		http://www.kde.org/
 BuildRequires:	gettext-devel
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
