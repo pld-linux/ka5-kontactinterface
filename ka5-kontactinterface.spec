@@ -1,19 +1,19 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.04.3
+%define		kdeappsver	22.08.0
 %define		kframever	5.94.0
 %define		kfver		5.53.0
 %define		qtver		5.15.2
 %define		kaname		kontactinterface
 Summary:	Kontact interface
 Name:		ka5-%{kaname}
-Version:	22.04.3
+Version:	22.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	f14f38dafd4159254f9f0a96b82ddbb4
+# Source0-md5:	74671370c8bc56ad7641a4b41e7f2ac0
 URL:		http://www.kde.org/
 BuildRequires:	gettext-devel
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
