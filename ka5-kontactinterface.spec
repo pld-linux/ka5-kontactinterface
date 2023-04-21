@@ -1,19 +1,19 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.12.3
+%define		kdeappsver	23.04.0
 %define		kframever	5.94.0
 %define		kfver		5.53.0
 %define		qtver		5.15.2
 %define		kaname		kontactinterface
 Summary:	Kontact interface
 Name:		ka5-%{kaname}
-Version:	22.12.3
-Release:	2
+Version:	23.04.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	39915fe13f563c8600b4c98246de96be
+# Source0-md5:	fa22cfa802007e27c2cdbd227ef7746f
 URL:		http://www.kde.org/
 BuildRequires:	gettext-devel
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
@@ -83,14 +83,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-%ghost %{_libdir}/libKF5KontactInterface.so.5
-%attr(755,root,root) %{_libdir}/libKF5KontactInterface.so.*.*.*
 %{_datadir}/qlogging-categories5/kontactinterface.categories
 %{_datadir}/qlogging-categories5/kontactinterface.renamecategories
+%ghost %{_libdir}/libKPim5KontactInterface.so.5
+%attr(755,root,root) %{_libdir}/libKPim5KontactInterface.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KF5/KontactInterface
-%{_libdir}/cmake/KF5KontactInterface
-%{_libdir}/libKF5KontactInterface.so
 %{_libdir}/qt5/mkspecs/modules/qt_KontactInterface.pri
+%{_includedir}/KPim5/KontactInterface
+%{_libdir}/cmake/KF5KontactInterface
+%{_libdir}/cmake/KPim5KontactInterface
+%{_libdir}/libKPim5KontactInterface.so
