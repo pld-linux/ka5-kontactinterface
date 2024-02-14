@@ -1,30 +1,30 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.08.4
+%define		kdeappsver	24.01.95
 %define		kframever	5.94.0
 %define		kfver		5.53.0
 %define		qtver		5.15.2
 %define		kaname		kontactinterface
 Summary:	Kontact interface
 Name:		ka5-%{kaname}
-Version:	23.08.4
-Release:	1
+Version:	24.01.95
+Release:	0.1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	b262933ed9eb751e52cfda2c2ea0bcfa
+Source0:	https://download.kde.org/unstable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	17b8ef141494386578056790b8933e53
 URL:		http://www.kde.org/
 BuildRequires:	gettext-devel
-BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
-BuildRequires:	kf5-kcoreaddons-devel >= %{kframever}
-BuildRequires:	kf5-ki18n-devel >= %{kframever}
-BuildRequires:	kf5-kiconthemes-devel >= %{kframever}
-BuildRequires:	kf5-kparts-devel >= %{kframever}
-BuildRequires:	kf5-kwindowsystem-devel >= %{kframever}
-BuildRequires:	kf5-kxmlgui-devel >= %{kframever}
+BuildRequires:	kf6-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf6-kcoreaddons-devel >= %{kframever}
+BuildRequires:	kf6-ki18n-devel >= %{kframever}
+BuildRequires:	kf6-kiconthemes-devel >= %{kframever}
+BuildRequires:	kf6-kparts-devel >= %{kframever}
+BuildRequires:	kf6-kwindowsystem-devel >= %{kframever}
+BuildRequires:	kf6-kxmlgui-devel >= %{kframever}
 BuildRequires:	ninja
-BuildRequires:	qt5-build >= %{qtver}
+BuildRequires:	qt6-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
@@ -69,7 +69,6 @@ ctest --test-dir build
 %install
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
-install -d $RPM_BUILD_ROOT%{_includedir}/KF5/Akonadi
 
 %find_lang %{kaname} --all-name --with-kde
 
@@ -81,14 +80,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-%{_datadir}/qlogging-categories5/kontactinterface.categories
-%{_datadir}/qlogging-categories5/kontactinterface.renamecategories
-%ghost %{_libdir}/libKPim5KontactInterface.so.5
-%attr(755,root,root) %{_libdir}/libKPim5KontactInterface.so.*.*.*
+%attr(755,root,root) %{_libdir}/libKPim6KontactInterface.so.*.*
+%ghost %{_libdir}/libKPim6KontactInterface.so.6
+%{_datadir}/qlogging-categories6/kontactinterface.categories
+%{_datadir}/qlogging-categories6/kontactinterface.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/qt5/mkspecs/modules/qt_KontactInterface.pri
-%{_includedir}/KPim5/KontactInterface
-%{_libdir}/cmake/KPim5KontactInterface
-%{_libdir}/libKPim5KontactInterface.so
+%{_includedir}/KPim6/KontactInterface
+%{_libdir}/cmake/KPim6KontactInterface
+%{_libdir}/libKPim6KontactInterface.so
